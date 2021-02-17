@@ -14,4 +14,10 @@
 // Use `safeProp` and `map/join` or `chain` to safely get the street name when given a user
 
 // getStreetName :: User -> Maybe String
-const getStreetName = undefined;
+const getStreetName = compose(
+  join,
+  map(safeProp('name')),
+  join,
+  map(safeProp('street')),
+  safeProp('address'),
+);
